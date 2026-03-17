@@ -1,0 +1,11 @@
+python-telegram-bot
+langchain
+langchain-openai
+langchain-chroma
+langchain-community
+faiss-cpu
+gspread
+oauth2client
+pandas
+python-dotenv
+tiktoken
