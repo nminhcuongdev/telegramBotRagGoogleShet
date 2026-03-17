@@ -1,0 +1,10 @@
+services:
+  bot:
+    build: .
+    container_name: telegram-bot-rag
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+      - ./config:/app/config
+    command: ["python", "src/bot.py"]
