@@ -30,30 +30,33 @@ Telegram bot that answers questions from Google Sheets data using a RAG pipeline
 - Telegram Bot Token
 - OpenAI API key
 - Google Service Account credentials (for Google Sheets)
+- Docker Desktop (only needed for Docker option)
 
-## Setup
+## Setup Options
 
-1. Clone repository
+### Clone repository
 
 ```bash
 git clone https://github.com/nminhcuongdev/telegramBotRagGoogleShet.git
 cd telegramBotRagGoogleShet
 ```
 
-2. Create and activate virtual environment
+### Option 1: Local setup (recommended for development)
+
+1. Create and activate virtual environment
 
 ```bash
 python -m venv .venv
 .venv\Scripts\activate
 ```
 
-3. Install dependencies
+2. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-4. Configure environment variables
+3. Configure environment variables
 
 ```bash
 copy .env.example .env
@@ -65,13 +68,44 @@ Then edit `.env`:
 - `OPENAI_API_KEY`: OpenAI API key.
 - `SHEET_KEY`: Google Sheet key.
 
-5. Add Google credentials
+4. Add Google credentials
 
 Place your service account file at:
 
 - `config/credentials.json`
 
-## Usage
+5. Run bot
+
+```bash
+python src/bot.py
+```
+
+### Option 2: Docker setup
+
+1. Configure environment variables
+
+```bash
+copy .env.example .env
+```
+
+2. Add Google credentials at:
+
+- `config/credentials.json`
+
+3. Build and run with Docker Compose
+
+```bash
+docker compose up --build
+```
+
+Or run with Docker directly:
+
+```bash
+docker build -t telegram-bot-rag .
+docker run --rm -it --env-file .env -v %cd%\\data:/app/data -v %cd%\\config:/app/config telegram-bot-rag
+```
+
+## Optional Commands (Local mode)
 
 ### Ingest data
 
@@ -83,12 +117,6 @@ python src/ingest_checkmate_data.py
 
 ```bash
 python src/query_checkmate_data.py "What is the balance of customer C550?"
-```
-
-### Run Telegram bot
-
-```bash
-python src/bot.py
 ```
 
 ## Security Notes
