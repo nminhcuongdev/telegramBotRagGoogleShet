@@ -3,6 +3,8 @@
 Telegram bot that answers questions from Google Sheets data using a RAG pipeline (LangChain + OpenAI + ChromaDB).
 
 ![Telegram Bot Screenshot](screenshots/telebot.png)
+![Telegram Bot Screenshot](screenshots/googlesheet1.png)
+![Telegram Bot Screenshot](screenshots/googlesheet2.png)
 
 ## Features
 
